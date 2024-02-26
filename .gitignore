@@ -1,0 +1,20 @@
+.vscode
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Módulos e dependências
+node_modules/
+
+# Arquivos de compilação e logs
+/dist/
+/coverage/
+/logs/
+/*.log
+
+# Arquivos de ambiente
+.env
+
+# Arquivos de configuração
+/tsconfig.json
+/jest.config.js
