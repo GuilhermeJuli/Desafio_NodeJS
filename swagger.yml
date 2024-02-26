@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Desafio Node.js API
+  version: 1.0.0
+  description: Code challenge requested for development testing using HTTP methodology passing bet values ​​and receiving a result in return... in cases of triggering the code on a machine, if it meets the database requirement, mongodb is being used, as the database registered by the user's network IP, it will return an error as the connection is limited to only the database creator's network
+paths:
+  /:
+    get:
+      summary: Returns a welcome message
+      responses:
+        '200':
+          description: Hey! This is my API.
+
+  /register:
+    post:
+      summary: Register a new customer
+      responses:
+        '200':
+          description: Customer registered
+          content:
+             application/json:
+               example:
+                 name: "Teste"
+
+  /clients:
+    get:
+      summary: Returns the list of customers
+      responses:
+        '200':
+          description: List of customers
+          content:
+             application/json:
+               example:
+                 - id: "65da35a153f5b0de4b7c993c"
+                   name: "Teste"
+                   date: "2022-01-01T00:00:00.000Z"
+                   __v: 0
+          
+          
+
+  /bet/{id}/{risc}/{bet}/{lines}:
+    get:
+      summary: Calcula o resultado da aposta para um cliente específico
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do cliente
+          schema:
+            type: string
+        - in: path
+          name: risc
+          required: true
+          description: Nível de risco da aposta
+          schema:
+            type: string
+        - in: path
+          name: bet
+          required: true
+          description: Valor da aposta
+          schema:
+            type: integer
+        - in: path
+          name: lines
+          required: true
+          description: Número de linhas da aposta
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Resultado da aposta
+
+  /clients/{id}:
+    delete:
+      summary: Exclui um cliente pelo ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do cliente a ser excluído
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cliente excluído com sucesso
